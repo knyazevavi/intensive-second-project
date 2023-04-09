@@ -1,4 +1,4 @@
-document.getElementsByClassName("main-title")[0].style.color = "red";//орбращение по классу и изменение цвета
+// document.getElementsByClassName("main-title")[0].style.color = "red";//орбращение по классу и изменение цвета
 
 //Обработчик событий
 
@@ -28,3 +28,16 @@ document.getElementById("price-action").onclick = function(){
     }
 
 }
+
+// функция добавления смещения главного фона при скроллинге странице
+document.addEventListener("DOMContentLoaded", function () {
+    let layer = document.querySelector('.price-image');
+    document.addEventListener('mousemove', (event) => {
+        layer.style.transform = 'translate3d(' + ((event.clientX * 0.5) / 10) + 'px,' + ((event.clientY * 0.3) / 8) + 'px,0px)';
+    });
+
+    const elem = document.querySelector(".main");
+    document.addEventListener('scroll', () => {
+            elem.style.backgroundPositionX = '0' + (0.5 * window.pageYOffset) + 'px';
+    })
+});
